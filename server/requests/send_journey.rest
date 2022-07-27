@@ -1,0 +1,13 @@
+post http://localhost:3003/api/journeys
+Content-Type: application/json
+
+{
+  "departure": "asdasdsadsadas",
+  "return": "gasfdasfasfasf",
+  "departureId": 5555,
+  "departureName": "asdasdasdsad",
+  "returnId": 4444,
+  "returnName": "asdaaa",
+  "distance": 11111,
+  "duration": 22222
+}
