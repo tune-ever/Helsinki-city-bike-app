@@ -8,7 +8,7 @@ const JourneyList = () => {
   const [currentPage, setCurrentPage] = useState(1)
   
   useEffect(() => {
-    journeyService.get10().then(journeys => 
+    journeyService.get10().then(journeys =>
       setJourneys(journeys)
     )
   }, [])
