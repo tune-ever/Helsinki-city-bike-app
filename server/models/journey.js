@@ -11,5 +11,4 @@ const journeySchema = ({
   duration: Number
 })
 
-
 module.exports = mongoose.model('Journey', journeySchema)

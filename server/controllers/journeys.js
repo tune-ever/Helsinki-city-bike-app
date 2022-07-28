@@ -2,8 +2,9 @@ const JourneyRouter = require('express').Router()
 const Journey = require('../models/journey')
 
 JourneyRouter.get('/', async (request, response) => {
+  const lastIndex = request.headers.lastindex
   const journeys = await Journey
-    .find({}).skip(20).limit(10)
+    .find({}).skip(lastIndex).limit(25)
   response.json(journeys)
 })
 

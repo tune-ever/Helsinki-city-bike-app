@@ -1,9 +1,14 @@
 import axios from 'axios'
 const baseUrl = '/api/journeys'
 
-const get10 = () => {
-  const request = axios.get(baseUrl)
+const getNext25 = (lastIndex) => {
+  const request = axios.get(baseUrl, {
+    headers: {
+      'lastIndex': lastIndex
+    }
+  })
   return request.then(response => response.data)
 }
 
-export default { get10 }
+
+export default { getNext25 }
