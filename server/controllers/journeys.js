@@ -3,7 +3,7 @@ const Journey = require('../models/journey')
 
 JourneyRouter.get('/', async (request, response) => {
   const journeys = await Journey
-    .find({})
+    .find({}).skip(20).limit(10)
   response.json(journeys)
 })
 
