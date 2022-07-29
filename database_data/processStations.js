@@ -32,7 +32,7 @@ const readFiles = () => {
 const getStations = async () => {
   const data = await readFiles()
   
-  return data
+  writeFile(JSON.stringify(data))
 }
 
 const writeFile = (data) => {
@@ -46,4 +46,4 @@ const writeFile = (data) => {
   })
 }
 
-module.exports = { getStations }
+getStations()

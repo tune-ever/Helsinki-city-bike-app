@@ -5,3 +5,4 @@ node_modules
 asemat.csv
 .env
 stations.json
+journeys.json

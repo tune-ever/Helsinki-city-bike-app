@@ -1,6 +1,5 @@
 const fs = require('fs')
 const csv = require('csv-parser')
-const { getStations } = require('./processStations')
 
 const readFiles = () => {
   const results = []
@@ -72,34 +71,17 @@ const readFiles = () => {
 
 const filteredJourneys = async () => {
   const data = await readFiles()
-  const stations = await getStations()
   
-  stations.sort((a, b) => a.id - b.id)
-  stations.map(station => {
-    station.id = parseInt(station.id, 10)
-    station.journeys = []
-  })
-
-  data.map(journey => {
-    stations.map(station => {
-      if(parseInt(journey.dId, 10) === station.id){
-        station.journeys.push(journey)
-        console.log("working")
-      }
-    })
-  })
-
-  console.log("trying to convert to JSON")
-  writeFile(JSON.stringify(stations))
+  console.log("start writing file")
+  writeFile(JSON.stringify(data))
 }
 
 const writeFile = (data) => {
-  fs.writeFile('stations.json', data, 'utf8', (err) =>{
+  fs.writeFile('journeys.json', data, 'utf8', (err) =>{
     if(err)
       console.log(err)
     else {
       console.log("File written")
-      console.log(fs.readFileSync('stations.json', 'utf-8'))
     }
   })
 }

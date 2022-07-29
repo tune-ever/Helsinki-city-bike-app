@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Helsinki city bike app</h1>
-      <JourneyList />
+      <StationsList />
     </>
   );
 }

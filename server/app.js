@@ -1,7 +1,7 @@
 const config = require('./utils/config')
 const express = require('express')
 const app = express()
-const journeysRouter = require('./controllers/journeys')
+const stationsRouter = require('./controllers/stations')
 const mongoose = require('mongoose')
 
 
@@ -13,7 +13,7 @@ mongoose.connect(config.MONGODB_URI)
 
 app.use(express.json())
 
-app.use('/api/journeys', journeysRouter)
+app.use('/api/stations', stationsRouter)
 
 
 
