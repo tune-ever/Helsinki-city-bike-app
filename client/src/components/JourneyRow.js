@@ -4,10 +4,10 @@ const JourneyRow = (props) => {
 
   return (
     <tr>
-      <td>{journey['Departure station name']}</td>
-      <td>{journey['Return station name']}</td>
-      <td>{(journey['Covered distance (m)']/1000).toPrecision(2)} km</td>
-      <td>{(journey['Duration (sec'][')']/60).toPrecision(2)}
+      <td>{journey.dId}</td>
+      <td>{journey.rId}</td>
+      <td>{(journey.dis/1000).toPrecision(2)} km</td>
+      <td>{(journey.dur/60).toPrecision(2)}
        min<br/></td>
     </tr>
   )
