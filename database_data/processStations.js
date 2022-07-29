@@ -8,6 +8,8 @@ const readFiles = () => {
   fs.createReadStream('./asemat.csv')
     .pipe(csv({
       mapHeaders: ({ header, index }) => {
+        if(index === 1)
+          return 'id'
         if(index === 2) 
           return 'name'
         if(index === 5)
@@ -29,7 +31,8 @@ const readFiles = () => {
 
 const getStations = async () => {
   const data = await readFiles()
-  writeFile(JSON.stringify(data))
+  
+  return data
 }
 
 const writeFile = (data) => {
@@ -43,4 +46,4 @@ const writeFile = (data) => {
   })
 }
 
-getStations()
+module.exports = { getStations }
