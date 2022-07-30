@@ -8,10 +8,12 @@ JourneysRouter.get('/', async (request, response) => {
     const total = await Journey.estimatedDocumentCount({})
     response.json(total)
   }
-  const posts = await Journey.find({})
+  else{
+  const journeys = await Journey.find({})
     .limit(PAGE_SIZE)
     .skip(PAGE_SIZE * page)
-  response.json(posts)
+    response.json(journeys)
+  }
 })
 
 module.exports = JourneysRouter

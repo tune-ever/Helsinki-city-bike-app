@@ -1,31 +1,27 @@
 import { useState, useEffect } from 'react'
 import stationsService from '../services/stationsService'
 import StationRow from './StationRow'
+import Pagination from './Pagination'
 
 const StationsList = () => {
 
   const [stations, setStations] = useState([])
-  const [lastIndex, setLastIndex] = useState(25)
+  const [currentPage, setCurrentPage] = useState(0)
 
   useEffect(() => {
-    stationsService.getNext25(25).then(stations =>
+    stationsService.getStations(currentPage).then(stations =>{
       setStations(stations)
+    }
     )
-  }, [])
+  }, [currentPage])
 
+
+  const prevPage = () => {
+    setCurrentPage(currentPage-1)
+  }
 
   const nextPage = () => {
-    stationsService.getNext25(lastIndex).then(
-      stations => setStations(stations)
-    )
-    setLastIndex(lastIndex + 25)
-  }
-  
-  const prevPage = () => {
-    setLastIndex(lastIndex -25)
-    stationsService.getNext25(lastIndex).then(
-      stations => setStations(stations)
-    )
+    setCurrentPage(currentPage+1)
   }
 
   return (
@@ -37,10 +33,8 @@ const StationsList = () => {
             <StationRow key={station._id} station={station} />)}
         </tbody>
       </table>
-      <button onClick={nextPage}>Next</button>
-      {lastIndex > 25 && 
-        <button onClick={prevPage}>Prev</button>
-      }
+      <Pagination currentPage={currentPage} prevPage={prevPage}
+        nextPage={nextPage}/>
     </div>
   )
 }

@@ -1,9 +1,13 @@
 
 const Pagination = (props) => {
-  const page = props.page
+  const currentPage = props.currentPage
+  const totalPages = props.totalPages
   return (
     <div>
-      Page: {page + 1}
+      {(currentPage>0) && 
+      <button onClick={props.prevPage}>Previous</button>
+      }
+      <button onClick={props.nextPage}>Next</button>
     </div>
   )
 }

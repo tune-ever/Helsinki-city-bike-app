@@ -6,22 +6,26 @@ import Pagination from './Pagination'
 const JourneyList = () => {
 
   const [journeys, setJourneys] = useState([])
-  const [page, setPage] = useState(0)
+  const [currentPage, setCurrentPage] = useState(0)
+  const [totalPages, setTotalPages] = useState(0)
 
   useEffect(() => {
-    journeyService.getJourneys(page).then(journeys =>{
+    journeyService.getJourneys(currentPage).then(journeys =>{
       setJourneys(journeys)
     }
     )
-  }, [page])
+  }, [currentPage])
 
-
-  const nextPage = () => {
-    console.log(journeys)
-  }
+  useEffect(() => {
+    journeyService.getTotal().then(total => setTotalPages(total))
+  })
   
   const prevPage = () => {
+    setCurrentPage(currentPage-1)
+  }
 
+  const nextPage = () => {
+    setCurrentPage(currentPage+1)
   }
 
   return (
@@ -35,7 +39,8 @@ const JourneyList = () => {
           )}
         </tbody>
       </table>
-      <Pagination page={page} />
+      <Pagination currentPage={currentPage} prevPage={prevPage}
+      totalPages={totalPages} nextPage={nextPage}/>
     </div>
   )
 }
