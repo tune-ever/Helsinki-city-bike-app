@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import journeyService from '../services/journeyService'
+import stationsService from '../services/stationsService'
 import JourneyRow from './JourneyRow'
 import Pagination from './Pagination'
 
@@ -8,6 +9,11 @@ const JourneyList = () => {
   const [journeys, setJourneys] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
+  const [allStations, setAllStations] = useState([])
+
+  const stationsArray = []
+  allStations.map(station =>
+    stationsArray[station.id] = station)
 
   useEffect(() => {
     journeyService.getJourneys(currentPage).then(journeys =>{
@@ -18,7 +24,13 @@ const JourneyList = () => {
 
   useEffect(() => {
     journeyService.getTotal().then(total => setTotalPages(total))
-  })
+  }, [])
+
+  useEffect(() => {
+    stationsService.getAll().then(stations => {
+      setAllStations(stations)
+    })
+  }, [])
   
   const prevPage = () => {
     setCurrentPage(currentPage-1)
@@ -30,12 +42,14 @@ const JourneyList = () => {
 
   return (
     <div>
+      <h1>Journeys</h1>
       <table>
         <thead><tr><th>Departure</th><th>Return</th>
         <th>Distance</th><th>Duration</th></tr></thead>
         <tbody>
           {journeys.map((journey) => 
-            <JourneyRow key={journey._id} journey={journey} />
+            <JourneyRow key={journey._id} journey={journey} 
+            stationsArray={stationsArray} />
           )}
         </tbody>
       </table>

@@ -26,6 +26,7 @@ const StationsList = () => {
 
   return (
     <div>
+      <h1>Stations</h1>
       <table>
         <thead><tr><th>Name</th><th>Address</th></tr></thead>
         <tbody>

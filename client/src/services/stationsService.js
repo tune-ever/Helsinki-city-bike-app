@@ -6,5 +6,9 @@ const getStations = (page) => {
   return request.then(response => response.data)
 }
 
+const getAll = () => {
+  const request = axios.get(`${baseUrl}?page=all`)
+  return request.then(response => response.data)
+}
 
-export default { getStations }
+export default { getStations, getAll }
