@@ -8,7 +8,7 @@ const StationsList = () => {
   const [lastIndex, setLastIndex] = useState(25)
 
   useEffect(() => {
-    stationsService.getNext25(0).then(stations =>
+    stationsService.getNext25(25).then(stations =>
       setStations(stations)
     )
   }, [])
@@ -24,7 +24,7 @@ const StationsList = () => {
   const prevPage = () => {
     setLastIndex(lastIndex -25)
     stationsService.getNext25(lastIndex).then(
-      journeys => setStations(stations)
+      stations => setStations(stations)
     )
   }
 

@@ -1,10 +1,10 @@
 import axios from 'axios'
 const baseUrl = '/api/journeys'
 
-const getNext25 = (lastIndex) => {
+const getNext25 = (rowsToSkip) => {
   const request = axios.get(baseUrl, {
     headers: {
-      'lastIndex': lastIndex
+      'rowstoskip': rowsToSkip
     }
   })
   return request.then(response => response.data)

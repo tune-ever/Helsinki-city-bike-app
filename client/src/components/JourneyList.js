@@ -8,7 +8,7 @@ const JourneyList = () => {
   const [lastIndex, setLastIndex] = useState(25)
 
   useEffect(() => {
-    journeyService.getNext25(1).then(journeys =>
+    journeyService.getNext25(0).then(journeys =>
       setJourneys(journeys)
     )
   }, [])
@@ -16,16 +16,17 @@ const JourneyList = () => {
 
   const nextPage = () => {
     journeyService.getNext25(lastIndex).then(
-      journeys => setJourneys(journeys)
+      journeys =>
+        setJourneys(journeys)
     )
     setLastIndex(lastIndex + 25)
   }
   
   const prevPage = () => {
-    setLastIndex(lastIndex -25)
-    journeyService.getNext25(lastIndex).then(
+    journeyService.getNext25(lastIndex-50).then(
       journeys => setJourneys(journeys)
     )
+    setLastIndex(lastIndex-50)
   }
 
   return (
@@ -39,7 +40,7 @@ const JourneyList = () => {
         </tbody>
       </table>
       <button onClick={nextPage}>Next</button>
-      {lastIndex > 26 && 
+      {lastIndex > 25 && 
         <button onClick={prevPage}>Prev</button>
       }
     </div>

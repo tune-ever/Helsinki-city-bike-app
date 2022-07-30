@@ -3,7 +3,7 @@ const Station = require('../models/station')
 
 StationsRouter.get('/', async (request, response) => {
   const lastIndex = request.headers.lastindex
-  const stations = await Station.find({}).limit(5)
+  const stations = await Station.find({}).skip(lastIndex).limit(25)
   response.json(stations)
 })
 

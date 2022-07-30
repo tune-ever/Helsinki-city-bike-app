@@ -4,10 +4,10 @@ import CurrentStation from './components/CurrentStation'
 
 function App() {
   return (
-    <>
-      <h1>Helsinki city bike app</h1>
+    <div className="main">
       <JourneyList />
-    </>
+      <StationsList />
+    </div>
   );
 }
 
