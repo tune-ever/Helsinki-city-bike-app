@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const journeySchema = mongoose.Schema({
+const journeySchema = new mongoose.Schema({
   dId: Number,
   rId: Number,
   dis: Number,

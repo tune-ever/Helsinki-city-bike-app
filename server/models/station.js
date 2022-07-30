@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const stationSchema = ({
+const stationSchema = new mongoose.Schema({
   id: Number,
   name: String,
   address: String,

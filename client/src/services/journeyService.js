@@ -1,14 +1,11 @@
 import axios from 'axios'
 const baseUrl = '/api/journeys'
 
-const getNext25 = (rowsToSkip) => {
-  const request = axios.get(baseUrl, {
-    headers: {
-      'rowstoskip': rowsToSkip
-    }
-  })
+const getJourneys = (page) => {
+  const request = 
+    axios.get(`${baseUrl}?page=${page}`)
   return request.then(response => response.data)
 }
 
 
-export default { getNext25 }
+export default { getJourneys }
