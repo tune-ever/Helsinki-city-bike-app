@@ -4,12 +4,12 @@ import stationsService from '../services/stationsService'
 import JourneyRow from './JourneyRow'
 import Pagination from './Pagination'
 
-const JourneyList = () => {
+const JourneyList = ({ allStations }) => {
 
   const [journeys, setJourneys] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
-  const [totalPages, setTotalPages] = useState(0)
-  const [allStations, setAllStations] = useState([])
+  const [totalJourneys, setTotalJourneys] = useState(0)
+  
 
   const stationsArray = []
   allStations.map(station =>
@@ -23,14 +23,9 @@ const JourneyList = () => {
   }, [currentPage])
 
   useEffect(() => {
-    journeyService.getTotal().then(total => setTotalPages(total))
+    journeyService.getTotal().then(total => setTotalJourneys(total))
   }, [])
 
-  useEffect(() => {
-    stationsService.getAll().then(stations => {
-      setAllStations(stations)
-    })
-  }, [])
   
   const prevPage = () => {
     if(currentPage > 0)
@@ -38,7 +33,8 @@ const JourneyList = () => {
   }
 
   const nextPage = () => {
-    setCurrentPage(currentPage+1)
+    if(currentPage + 1 < (totalJourneys/15))
+      setCurrentPage(currentPage+1)
   }
 
   const updatePage = (pageIndex) => {
@@ -60,7 +56,7 @@ const JourneyList = () => {
         </tbody>
       </table>
       <Pagination currentPage={currentPage} prevPage={prevPage}
-      totalPages={totalPages} nextPage={nextPage}
+      totalElements={totalJourneys} nextPage={nextPage}
       updatePage={updatePage} />
     </div>
   )

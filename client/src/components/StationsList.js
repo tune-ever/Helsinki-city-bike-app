@@ -3,10 +3,12 @@ import stationsService from '../services/stationsService'
 import StationRow from './StationRow'
 import Pagination from './Pagination'
 
-const StationsList = () => {
+const StationsList = ({ allStations }) => {
 
   const [stations, setStations] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
+  
+  const totalStations = allStations.length
 
   useEffect(() => {
     stationsService.getStations(currentPage).then(stations =>{
@@ -15,14 +17,14 @@ const StationsList = () => {
     )
   }, [currentPage])
 
-
   const prevPage = () => {
     if(currentPage > 0)
       setCurrentPage(currentPage-1)
   }
 
   const nextPage = () => {
-    setCurrentPage(currentPage+1)
+    if(currentPage + 1 < (totalStations/15))
+      setCurrentPage(currentPage+1)
   }
 
   const updatePage = (pageIndex) => {
@@ -41,7 +43,8 @@ const StationsList = () => {
         </tbody>
       </table>
       <Pagination currentPage={currentPage} prevPage={prevPage}
-        updatePage={updatePage} nextPage={nextPage}/>
+        updatePage={updatePage} nextPage={nextPage}
+        totalElements={totalStations}/>
     </div>
   )
   else
