@@ -17,12 +17,18 @@ const StationsList = () => {
 
 
   const prevPage = () => {
-    setCurrentPage(currentPage-1)
+    if(currentPage > 0)
+      setCurrentPage(currentPage-1)
   }
 
   const nextPage = () => {
     setCurrentPage(currentPage+1)
   }
+
+  const updatePage = (pageIndex) => {
+    setCurrentPage(pageIndex)
+  }
+
   if(stations.length > 5)
   return (
     <div>
@@ -35,7 +41,7 @@ const StationsList = () => {
         </tbody>
       </table>
       <Pagination currentPage={currentPage} prevPage={prevPage}
-        nextPage={nextPage}/>
+        updatePage={updatePage} nextPage={nextPage}/>
     </div>
   )
   else

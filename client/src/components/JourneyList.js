@@ -33,7 +33,8 @@ const JourneyList = () => {
   }, [])
   
   const prevPage = () => {
-    setCurrentPage(currentPage-1)
+    if(currentPage > 0)
+      setCurrentPage(currentPage-1)
   }
 
   const nextPage = () => {
