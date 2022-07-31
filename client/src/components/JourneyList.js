@@ -40,6 +40,11 @@ const JourneyList = () => {
     setCurrentPage(currentPage+1)
   }
 
+  const updatePage = (pageIndex) => {
+    setCurrentPage(pageIndex)
+  }
+  
+  if(allStations.length > 5)
   return (
     <div>
       <h1>Journeys</h1>
@@ -54,9 +59,12 @@ const JourneyList = () => {
         </tbody>
       </table>
       <Pagination currentPage={currentPage} prevPage={prevPage}
-      totalPages={totalPages} nextPage={nextPage}/>
+      totalPages={totalPages} nextPage={nextPage}
+      updatePage={updatePage} />
     </div>
   )
+  else
+   return(<></>)
 }
 
 export default JourneyList

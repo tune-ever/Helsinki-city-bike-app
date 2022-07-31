@@ -23,7 +23,7 @@ const StationsList = () => {
   const nextPage = () => {
     setCurrentPage(currentPage+1)
   }
-
+  if(stations.length > 5)
   return (
     <div>
       <h1>Stations</h1>
@@ -38,6 +38,8 @@ const StationsList = () => {
         nextPage={nextPage}/>
     </div>
   )
+  else
+    return (<></>)
 }
 
 export default StationsList
