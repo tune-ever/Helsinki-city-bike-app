@@ -35,13 +35,8 @@ const StationsList = ({ allStations }) => {
   return (
     <div>
       <h1>Stations</h1>
-      <table>
-        <thead><tr><th>Name</th><th>Address</th></tr></thead>
-        <tbody>
-          {stations.map(station => 
-            <StationRow key={station._id} station={station} />)}
-        </tbody>
-      </table>
+        {stations.map(station => 
+          <StationRow key={station._id} station={station} />)}
       <Pagination currentPage={currentPage} prevPage={prevPage}
         updatePage={updatePage} nextPage={nextPage}
         totalElements={totalStations}/>

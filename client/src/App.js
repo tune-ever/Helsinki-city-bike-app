@@ -1,20 +1,10 @@
 import JourneyList from './components/JourneyList'
 import StationsList from './components/StationsList'
-import CurrentStation from './components/CurrentStation'
 import { useState, useEffect } from 'react'
 import stationsService from './services/stationsService'
 import { BrowserRouter as Router,
    Routes, Route, Link } from 'react-router-dom'
-
-
-const Home = () => {
-  return (
-    <div>
-      <h1>Helsinki City Bike App Data</h1>
-      <h2>Dev Academy pre-assignment</h2>
-    </div>
-  )
-}
+import Home from './components/Home'
 
 function App() {
   const [allStations, setAllStations] = useState([])

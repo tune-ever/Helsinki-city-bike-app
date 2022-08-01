@@ -1,12 +1,20 @@
+import { useState } from 'react'
+import SingleStation from './SingleStation'
 
 const StationRow = (props) => {
+  const [modal, setModal] = useState(false)
+
   const station = props.station
 
+  const toggleModal = () => {
+    setModal(!modal)
+  }
+
   return (
-    <tr>
-      <td>{station.name}</td>
-      <td>{station.address}</td>
-    </tr>
+    <div>
+      {station.name}
+      <button onClick={toggleModal}>Info</button>
+    </div>
   )
 }
 

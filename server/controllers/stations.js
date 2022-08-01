@@ -10,6 +10,7 @@ StationsRouter.get('/', async (request, response) => {
   }
   else{
     const stations = await Station.find({})
+      .sort({ 'name': 1 })
       .limit(PAGE_SIZE)
       .skip(PAGE_SIZE * page)
     response.json(stations)

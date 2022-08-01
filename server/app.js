@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const stationsRouter = require('./controllers/stations')
 const mongoose = require('mongoose')
-const JourneysRouter = require('./controllers/journeys')
+const journeysRouter = require('./controllers/journeys')
 
 
 console.log(`connecting to ${config.MONGODB_URI}`)
@@ -15,7 +15,7 @@ mongoose.connect(config.MONGODB_URI)
 app.use(express.json())
 
 app.use('/api/stations', stationsRouter)
-app.use('/api/journeys', JourneysRouter)
+app.use('/api/journeys', journeysRouter)
 
 
 module.exports = app

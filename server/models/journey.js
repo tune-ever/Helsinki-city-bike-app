@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const journeySchema = new mongoose.Schema({
-  dId: Number,
-  rId: Number,
-  dis: Number,
-  dur: Number
+  dId: String,
+  rId: String,
+  dis: String,
+  dur: String
 })
 
 module.exports = mongoose.model('Journey', journeySchema)

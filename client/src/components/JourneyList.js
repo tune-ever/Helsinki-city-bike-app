@@ -10,7 +10,6 @@ const JourneyList = ({ allStations }) => {
   const [currentPage, setCurrentPage] = useState(0)
   const [totalJourneys, setTotalJourneys] = useState(0)
   
-
   const stationsArray = []
   allStations.map(station =>
     stationsArray[station.id] = station)
@@ -41,7 +40,7 @@ const JourneyList = ({ allStations }) => {
     setCurrentPage(pageIndex)
   }
   
-  if(allStations.length > 5)
+  if(stationsArray.length > 5)
   return (
     <div>
       <h1>Journeys</h1>

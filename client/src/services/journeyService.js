@@ -11,5 +11,16 @@ const getTotal = () => {
   return request.then(response => response.data)
 }
 
+const getAmountFromStation = (id) => {
+  const request = axios.get(`${baseUrl}?dId=${id}`)
+  return request.then(response => response.data)
+}
 
-export default { getJourneys, getTotal }
+const getAmountToStation = (id) => {
+  const request = axios.get(`${baseUrl}?rId=${id}`)
+  return request.then(response => response.data)
+}
+
+
+export default { getJourneys, getTotal, 
+   }
