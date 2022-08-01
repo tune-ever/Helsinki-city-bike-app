@@ -12,15 +12,15 @@ const getTotal = () => {
 }
 
 const getAmountFromStation = (id) => {
-  const request = axios.get(`${baseUrl}?dId=${id}`)
+  const request = axios.get(`${baseUrl}?did=${id}`)
   return request.then(response => response.data)
 }
 
 const getAmountToStation = (id) => {
-  const request = axios.get(`${baseUrl}?rId=${id}`)
+  const request = axios.get(`${baseUrl}?rid=${id}`)
   return request.then(response => response.data)
 }
 
 
 export default { getJourneys, getTotal, 
-   }
+  getAmountFromStation, getAmountToStation }

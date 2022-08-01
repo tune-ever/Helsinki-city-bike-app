@@ -1,10 +1,24 @@
+import journeyService from '../services/journeyService'
+import { useEffect, useState } from 'react'
 
-const SingleStation = (props) => {
+const SingleStation = ({ station }) => {
+  const [journeysFrom, setJourneysFrom] = useState(0)
+  const [journeysTo, setJourneysTo] = useState(0)
 
+  useEffect(() => {
+    journeyService.getAmountFromStation(station.id)
+      .then(response => setJourneysFrom(response))
+  }, [])
+
+  useEffect(() => {
+    journeyService.getAmountToStation(station.id)
+      .then(response => setJourneysTo(response))
+  })
   return (
     <div>
-      <h3></h3>
-      Journeys from here:
+      <h3>{station.address}</h3>
+      <h4>Journeys from here:&nbsp;
+        {(journeysFrom > 0) ? journeysFrom : 'loading'}</h4>
     </div>
   )
 }

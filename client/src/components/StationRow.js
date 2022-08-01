@@ -6,14 +6,15 @@ const StationRow = (props) => {
 
   const station = props.station
 
-  const toggleModal = () => {
+  const toggleInfo = () => {
     setModal(!modal)
   }
 
   return (
     <div>
       {station.name}
-      <button onClick={toggleModal}>Info</button>
+      <button onClick={toggleInfo}>Info</button>
+      {modal && <SingleStation station={station} />}
     </div>
   )
 }
