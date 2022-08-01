@@ -1,0 +1,11 @@
+PUT http://localhost:3003/api/stations/501
+
+{
+  "id": "501",
+  "name": "Hanasaari",
+  "address": "Hanasaarenranta 1",
+  "x": "24.840319",
+  "y": "60.16582",
+  "startNum": 5000,
+  "endNum": 7000
+}

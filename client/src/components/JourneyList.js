@@ -12,7 +12,7 @@ const JourneyList = ({ allStations }) => {
   
   const stationsArray = []
   allStations.map(station =>
-    stationsArray[station.id] = station)
+    stationsArray[parseInt(station.id)] = station)
 
   useEffect(() => {
     journeyService.getJourneys(currentPage).then(journeys =>{

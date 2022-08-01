@@ -17,5 +17,15 @@ StationsRouter.get('/', async (request, response) => {
   }
 })
 
+StationsRouter.put('/', async (request, response) => {
+  const station = request.body
+  const id = request.query.id
+
+  await Station.findByIdAndUpdate(
+      id, station,
+      { new: true, runValidators: true, context: 'query' }
+    )
+  response.status(200)
+})
 
 module.exports = StationsRouter

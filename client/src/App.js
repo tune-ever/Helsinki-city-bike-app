@@ -19,6 +19,12 @@ function App() {
     })
   }, [])
 
+  const updateStations = () => {
+    stationsService.getAll().then(stations => {
+      setAllStations(stations)
+    })
+  }
+
   return (
     <Router>
       <div>
@@ -30,7 +36,8 @@ function App() {
         <Route path='/journeys'
           element={<JourneyList allStations={allStations}/>}/>
         <Route path='/stations'
-          element={<StationsList allStations={allStations}/>}/>
+          element={<StationsList updateStations={updateStations} 
+          allStations={allStations}/>}/>
         <Route path='/' element={<Home />} />
       </Routes>
 
