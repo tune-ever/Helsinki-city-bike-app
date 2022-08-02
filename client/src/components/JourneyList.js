@@ -44,6 +44,7 @@ const JourneyList = ({ allStations }) => {
   return (
     <div>
       <h1>Journeys</h1>
+      <h3>Journeys data from 05-07/2021</h3>
       <table>
         <thead><tr><th>Departure</th><th>Return</th>
         <th>Distance</th><th>Duration</th></tr></thead>
