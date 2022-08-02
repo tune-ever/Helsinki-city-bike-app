@@ -4,23 +4,23 @@ import StationRow from './StationRow'
 import Pagination from './Pagination'
 import journeyService from '../services/journeyService'
 
-const StationsList = ({ allStations, updateStations }) => {
+const StationsList = ({ allStations }) => {
 
   const [currentStations, setCurrentStations] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
-  
   const totalStations = allStations.length
   const PAGE_SIZE = 15
   const startIndex = currentPage * PAGE_SIZE
   const endIndex = startIndex + 15
 
+
   useEffect(() => {
-    if(allStations.length === 0){
-      updateStations()
-    }
     setCurrentStations(allStations.slice(startIndex, endIndex))
   }, [currentPage])
 
+  useEffect(() => {
+    setCurrentStations(allStations.slice(startIndex, endIndex))
+  }, [allStations])
 
   const prevPage = () => {
     if(currentPage > 0)

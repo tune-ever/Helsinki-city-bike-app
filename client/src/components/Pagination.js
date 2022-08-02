@@ -2,7 +2,7 @@
 const Pagination = (props) => {
   const currentPage = props.currentPage
   const totalElements = props.totalElements
-  const pageIndexes = new Array(9).fill(null).map((v, i) => i)
+  const pageIndexes = new Array(currentPage+5).fill(null).map((v, i) => i)
 
   const active = {
     backgroundColor: 'cyan',
