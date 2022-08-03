@@ -40,6 +40,7 @@ const StationsList = ({ allStations }) => {
   return (
     <div>
       <h1>Stations</h1>
+      <h4>{totalStations} stations</h4>
         {currentStations.map(station => 
           <StationRow key={station._id} station={station} />)}
       <Pagination currentPage={currentPage} prevPage={prevPage}

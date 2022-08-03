@@ -1,5 +1,6 @@
 const fs = require('fs')
 const csv = require('csv-parser')
+const readJourneys = require('./processJourneys')
 
 const readFiles = () => {
   const stations = []
@@ -29,10 +30,28 @@ const readFiles = () => {
   })
 }
 
-const getStations = async () => {
-  const data = await readFiles()
+const addJourneysDataToStations = async () => {
+  const stations = await readFiles()
+  const journeys = await readJourneys()
+
+  stationsTable = new Array(1000)
+  stations.map(station => {
+    station.startNum = 0
+    station.endNum = 0
+    stationsTable[parseInt(station.id)] = station
+  })
   
-  writeFile(JSON.stringify(data))
+  journeys.map(journey => {
+    const returnId = parseInt(journey.rId)
+    const departureId = parseInt(journey.dId)
+    if(stationsTable[returnId])
+      stationsTable[returnId].startNum ++
+    if(stationsTable[departureId])
+      stationsTable[departureId].endNum ++
+    console.log('adding...')
+  })
+  
+  return stationsTable
 }
 
 const writeFile = (data) => {
@@ -46,4 +65,11 @@ const writeFile = (data) => {
   })
 }
 
-getStations()
+const createStationsJSON = async () => {
+  const stationsTable = await addJourneysDataToStations()
+
+  writeFile(JSON.stringify(stationsTable))
+
+}
+
+createStationsJSON()

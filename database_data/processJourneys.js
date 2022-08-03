@@ -1,7 +1,7 @@
 const fs = require('fs')
 const csv = require('csv-parser')
 
-const readFiles = () => {
+const readJourneys = () => {
   const results = []
   
   return new Promise((resolve, reject) => {
@@ -69,8 +69,8 @@ const readFiles = () => {
   })
 }
 
-const filteredJourneys = async () => {
-  const data = await readFiles()
+const convertJourneystoJSON = async () => {
+  const data = await readJourneys()
   
   console.log("start writing file")
   writeFile(JSON.stringify(data))
@@ -86,5 +86,4 @@ const writeFile = (data) => {
   })
 }
 
-
-filteredJourneys()
+module.exports = readJourneys

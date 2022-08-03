@@ -6,6 +6,8 @@ const stationSchema = new mongoose.Schema({
   address: String,
   x: String,
   y: String,
+  startNum: Number,
+  endNum: Number
 })
 
 module.exports = mongoose.model('Station', stationSchema)
