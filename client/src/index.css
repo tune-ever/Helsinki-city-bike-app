@@ -9,3 +9,26 @@ body {
   background-color: #C5D6D8;
   color: black;
 }
+
+.active {
+  text-decoration: none;
+  padding-right: 10px;
+  padding: 10px;
+  background-color: #99F7AB;
+}
+.inactive {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.active:hover {
+  background-color: whitesmoke;
+  width: 200px;
+  height: 200px;
+}
+
+.inactive:hover {
+  background-color: whitesmoke;
+  width: 200px;
+  height: 200px;
+}

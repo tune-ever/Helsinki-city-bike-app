@@ -1,5 +1,3 @@
-import journeyService from '../services/journeyService'
-import { useEffect, useState } from 'react'
 
 const SingleStation = ({ station }) => {
 

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import stationsService from '../services/stationsService'
 import StationRow from './StationRow'
 import Pagination from './Pagination'
-import journeyService from '../services/journeyService'
+import './styles.css'
 
 const StationsList = ({ allStations }) => {
 
@@ -22,17 +21,17 @@ const StationsList = ({ allStations }) => {
     setCurrentStations(allStations.slice(startIndex, endIndex))
   }, [allStations])
 
-  const prevPage = () => {
+  const goToPrevPage = () => {
     if(currentPage > 0)
       setCurrentPage(currentPage-1)
   }
 
-  const nextPage = () => {
+  const goToNextPage = () => {
     if(currentPage + 1 < (totalStations/15))
       setCurrentPage(currentPage+1)
   }
 
-  const updatePage = (pageIndex) => {
+  const goToIndexPage = (pageIndex) => {
     setCurrentPage(pageIndex)
   }
 
@@ -41,11 +40,22 @@ const StationsList = ({ allStations }) => {
     <div>
       <h1>Stations</h1>
       <h4>{totalStations} stations</h4>
+      <table>
+        <tr><th>Name</th><th>Click a row</th></tr>
         {currentStations.map(station => 
-          <StationRow key={station._id} station={station} />)}
-      <Pagination currentPage={currentPage} prevPage={prevPage}
-        updatePage={updatePage} nextPage={nextPage}
-        totalElements={totalStations}/>
+          <StationRow 
+            key={station._id} 
+            station={station} 
+          />
+        )}
+      </table>
+      <Pagination 
+        currentPage={currentPage} 
+        goToPrevPage={goToPrevPage}
+        goToIndexPage={goToIndexPage} 
+        goToNextPage={goToNextPage}
+        totalElements={totalStations}
+      />
     </div>
   )
   else

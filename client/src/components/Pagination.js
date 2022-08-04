@@ -25,25 +25,25 @@ const Pagination = (props) => {
   
   return (
     <div className='pagination'>
-      <button onClick={props.prevPage}>{'<<'}</button>
+      <button onClick={props.goToPrevPage}>{'<<'}</button>
       {(middleOfPagination) && <span>
-        <button onClick={() => props.updatePage(0)}>
+        <button onClick={() => props.goToIndexPage(0)}>
           1
         </button>
         <span>...</span>
       </span>}
       {pageIndexes.map(i => (currentPage === i)
         ? <button  key={i} style={active}>{i+1}</button>
-        : <button onClick={() => props.updatePage(i)} key={i}>
+        : <button onClick={() => props.goToIndexPage(i)} key={i}>
             {i+1}
           </button>)}
       {(!endOfPagination) &&
       <span><span>...</span>
-        <button onClick={() => props.updatePage(totalPages - 1)}>
+        <button onClick={() => props.goToIndexPage(totalPages - 1)}>
         {(totalPages) ? totalPages : ''}</button>
       </span>
       }
-      <button onClick={props.nextPage}>{'>>'}</button>
+      <button onClick={props.goToNextPage}>{'>>'}</button>
     </div>
   )
 }

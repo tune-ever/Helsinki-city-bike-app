@@ -11,11 +11,10 @@ const StationRow = (props) => {
   }
 
   return (
-    <div>
-      {station.name}
-      <button onClick={toggleInfo}>Info</button>
-      {modal && <SingleStation station={station} />}
-    </div>
+    <tr onClick={toggleInfo}>
+      <td>{station.name}</td>
+      <td>{modal && <SingleStation station={station} />}</td>
+    </tr>
   )
 }
 

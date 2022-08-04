@@ -3,15 +3,11 @@ import StationsList from './components/StationsList'
 import { useState, useEffect } from 'react'
 import stationsService from './services/stationsService'
 import { BrowserRouter as Router,
-   Routes, Route, Link } from 'react-router-dom'
+   Routes, Route, Link, NavLink } from 'react-router-dom'
 import Home from './components/Home'
 
 function App() {
   const [allStations, setAllStations] = useState([])
-
-  const padding = {
-    padding: 5
-  }
 
   useEffect(() => {
     stationsService.getAll().then(stations => {
@@ -22,9 +18,15 @@ function App() {
   return (
     <Router>
       <div>
-        <Link style={padding} to='/'>Home</Link>
-        <Link style={padding} to='/journeys'>Journeys</Link>
-        <Link style={padding} to='/stations'>Stations</Link>
+        <NavLink className={({ isActive }) => 
+        (isActive ? 'active' : 'inactive')}to='/'>
+          Home</NavLink>
+        <NavLink className={({ isActive }) => 
+        (isActive ? 'active' : 'inactive')} to='/journeys'>
+          Journeys</NavLink>
+        <NavLink className={({ isActive }) => 
+        (isActive ? 'active' : 'inactive')} to='/stations'>
+          Stations</NavLink>
       </div>
       <Routes>
         <Route path='/journeys'

@@ -26,17 +26,17 @@ const JourneyList = ({ allStations }) => {
   }, [])
 
   
-  const prevPage = () => {
+  const goToPreviousPage = () => {
     if(currentPage > 0)
       setCurrentPage(currentPage-1)
   }
 
-  const nextPage = () => {
+  const goToNextPage = () => {
     if(currentPage + 1 < (totalJourneys/15))
       setCurrentPage(currentPage+1)
   }
 
-  const updatePage = (pageIndex) => {
+  const goToIndexPage = (pageIndex) => {
     setCurrentPage(pageIndex)
   }
   
@@ -51,14 +51,21 @@ const JourneyList = ({ allStations }) => {
         <th>Distance</th><th>Duration</th></tr></thead>
         <tbody>
           {journeys.map((journey) => 
-            <JourneyRow key={journey._id} journey={journey} 
-            stationsArray={stationsArray} />
+            <JourneyRow 
+              key={journey._id} 
+              journey={journey} 
+              stationsArray={stationsArray} 
+            />
           )}
         </tbody>
       </table>
-      <Pagination currentPage={currentPage} prevPage={prevPage}
-      totalElements={totalJourneys} nextPage={nextPage}
-      updatePage={updatePage} />
+      <Pagination 
+        currentPage={currentPage} 
+        goToPreviousPageage={goToPreviousPage}
+        totalElements={totalJourneys} 
+        goToNextPage={goToNextPage}
+        goToIndexPage={goToIndexPage} 
+      />
     </div>
   )
   else
