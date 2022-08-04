@@ -1,3 +1,5 @@
+import './styles.css'
+
 
 const JourneyRow = (props) => {
   const journey = props.journey

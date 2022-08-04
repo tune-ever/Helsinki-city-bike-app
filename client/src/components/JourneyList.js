@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import journeyService from '../services/journeyService'
 import JourneyRow from './JourneyRow'
 import Pagination from './Pagination'
+import './styles.css'
 
 const JourneyList = ({ allStations }) => {
 

@@ -1,3 +1,4 @@
+import './styles.css'
 
 const Pagination = (props) => {
   const currentPage = props.currentPage
@@ -19,17 +20,17 @@ const Pagination = (props) => {
       pageIndexes.push(parseInt(i))
 
   const active = {
-    backgroundColor: 'cyan',
+    backgroundColor: 'lightgreen',
   }
   
   return (
-    <div>
-      <button onClick={props.prevPage}>Previous</button>
+    <div className='pagination'>
+      <button onClick={props.prevPage}>{'<<'}</button>
       {(middleOfPagination) && <span>
         <button onClick={() => props.updatePage(0)}>
           1
         </button>
-        ...
+        <span>...</span>
       </span>}
       {pageIndexes.map(i => (currentPage === i)
         ? <button  key={i} style={active}>{i+1}</button>
@@ -37,12 +38,12 @@ const Pagination = (props) => {
             {i+1}
           </button>)}
       {(!endOfPagination) &&
-      <span>...
+      <span><span>...</span>
         <button onClick={() => props.updatePage(totalPages - 1)}>
         {(totalPages) ? totalPages : ''}</button>
       </span>
       }
-      <button onClick={props.nextPage}>Next</button>
+      <button onClick={props.nextPage}>{'>>'}</button>
     </div>
   )
 }
