@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import journeyService from '../services/journeyService'
-import stationsService from '../services/stationsService'
 import JourneyRow from './JourneyRow'
 import Pagination from './Pagination'
 
