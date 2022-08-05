@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import StationRow from './StationRow'
 import Pagination from './Pagination'
 import './styles.css'
+import SearchForm from './SearchForm'
 
 const StationsList = ({ allStations }) => {
 
@@ -40,14 +41,19 @@ const StationsList = ({ allStations }) => {
     <div className='listComponent'>
       <h1>Stations</h1>
       <h4>{totalStations} stations</h4>
+      <SearchForm />
       <table>
-        <tr><th>Name</th><th>Click a row</th></tr>
-        {currentStations.map(station => 
-          <StationRow 
-            key={station._id} 
-            station={station} 
-          />
-        )}
+        <thead>
+          <tr><th>Name</th><th>Click a row</th></tr>
+        </thead>
+        <tbody>
+          {currentStations.map(station => 
+            <StationRow 
+              key={station._id} 
+              station={station} 
+            />
+          )}
+        </tbody>
       </table>
       <Pagination 
         currentPage={currentPage} 
