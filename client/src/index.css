@@ -1,20 +1,17 @@
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+* {
+  color: #373837;
 }
 
 body {
   font-family:Arial, Helvetica, sans-serif;
-  background-color: #C5D6D8;
-  color: black;
+  background-color: #D8DCE0;
+  color: #373837;
 }
 
 .active {
   text-decoration: none;
   padding-right: 10px;
   padding: 10px;
-  background-color: #99F7AB;
 }
 .inactive {
   text-decoration: none;
@@ -22,13 +19,13 @@ body {
 }
 
 .active:hover {
-  background-color: whitesmoke;
+  background-color: #F3F6F9;
   width: 200px;
   height: 200px;
 }
 
 .inactive:hover {
-  background-color: whitesmoke;
+  background-color: #F3F6F9;
   width: 200px;
   height: 200px;
 }

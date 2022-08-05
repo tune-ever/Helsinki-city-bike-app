@@ -4,7 +4,7 @@ table {
   overflow: hidden;
   table-layout: fixed;
   width: 80vw;
-  border-radius: 2%;
+  border-radius: 5px;
   margin: 10px;
 }
 
@@ -12,6 +12,8 @@ th {
   text-align: left;
   font-size: 1.2rem;
   padding-bottom: 6px;
+  background-color: #254673;
+  color: white;
 }
 
 td {
@@ -25,7 +27,7 @@ tr {
 }
 
 tr:nth-of-type(even) {
-  background-color: #99F7AB;
+  background-color: whitesmoke;
 }
 
 td:last-of-type {
@@ -53,7 +55,7 @@ td:nth-of-type(2) {
 }
 
 tr:hover {
-  background-color: whitesmoke;
+  background-color: #8FBBC1;
 }
 
 .pagination {
@@ -64,12 +66,17 @@ tr:hover {
 }
 
 .pagination button{
-  background-color: #C5D6D8;
   text-decoration: none;
   padding: 8px 16px;
   border: none;
+  border-radius: 10px;
+  background-color: #D8DCE0;
 }
 
 .pagination button:hover {
-  background-color: whitesmoke;
+  background-color: lightslategray;
+}
+
+.listComponent {
+  width: 80vw;
 }

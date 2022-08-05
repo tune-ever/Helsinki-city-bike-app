@@ -20,12 +20,13 @@ const Pagination = (props) => {
       pageIndexes.push(parseInt(i))
 
   const active = {
-    backgroundColor: 'lightgreen',
+    backgroundColor: '#2F6696',
+    color: 'whitesmoke'
   }
   
   return (
     <div className='pagination'>
-      <button onClick={props.goToPrevPage}>{'<<'}</button>
+      <button onClick={props.goToPrevPage}>{'<'}</button>
       {(middleOfPagination) && <span>
         <button onClick={() => props.goToIndexPage(0)}>
           1
@@ -43,7 +44,7 @@ const Pagination = (props) => {
         {(totalPages) ? totalPages : ''}</button>
       </span>
       }
-      <button onClick={props.goToNextPage}>{'>>'}</button>
+      <button onClick={props.goToNextPage}>{'>'}</button>
     </div>
   )
 }

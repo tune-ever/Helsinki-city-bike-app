@@ -37,7 +37,7 @@ const StationsList = ({ allStations }) => {
 
   if(currentStations.length > 5)
   return (
-    <div>
+    <div className='listComponent'>
       <h1>Stations</h1>
       <h4>{totalStations} stations</h4>
       <table>

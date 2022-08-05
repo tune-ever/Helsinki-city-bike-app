@@ -42,7 +42,7 @@ const JourneyList = ({ allStations }) => {
   
   if(stationsArray.length > 5)
   return (
-    <div>
+    <div className='listComponent'>
       <h1>Journeys</h1>
       <h3>Journeys data from 05-07/2021</h3>
       <h4>{totalJourneys} journeys</h4>
