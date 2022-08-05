@@ -7,7 +7,7 @@ const getJourneys = (page) => {
 }
 
 const getTotal = () => {
-  const request = axios.get(`${baseUrl}?page=total`)
+  const request = axios.get(`${baseUrl}?total=1`)
   return request.then(response => response.data)
 }
 

@@ -6,8 +6,9 @@ JourneysRouter.get('/', async (request, response) => {
   const page = request.query.page
   const depId = request.query.did
   const returnId = request.query.rid
-  
-  if(page === 'total'){
+  const total = request.query.total
+
+  if(total){
     const total = await Journey.find({}).count()
     response.json(total)
   }

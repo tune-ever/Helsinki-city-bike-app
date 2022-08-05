@@ -7,7 +7,7 @@ const getStations = (page) => {
 }
 
 const getAll = () => {
-  const request = axios.get(`${baseUrl}?page=all`)
+  const request = axios.get(`${baseUrl}?all=1`)
   return request.then(response => response.data)
 }
 
