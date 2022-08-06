@@ -3,69 +3,86 @@ import StationRow from './StationRow'
 import Pagination from './Pagination'
 import './styles.css'
 import SearchForm from './SearchForm'
+import stationsService from '../services/stationsService'
 
-const StationsList = ({ allStations }) => {
+const StationsList = () => {
 
   const [currentStations, setCurrentStations] = useState([])
-  const [currentPage, setCurrentPage] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [pageSize, setPageSize] = useState(15)
+  const startIndex = currentIndex * pageSize
+  const endIndex = startIndex + pageSize
+  const [allStations, setAllStations] = useState([])
+  const [searchStations, setSearchStations] = useState([])
   const totalStations = allStations.length
-  const PAGE_SIZE = 15
-  const startIndex = currentPage * PAGE_SIZE
-  const endIndex = startIndex + 15
 
+  useEffect(() => {
+    stationsService.getAll().then(stations => {
+      setAllStations(stations)
+    })
+  }, [])
 
   useEffect(() => {
     setCurrentStations(allStations.slice(startIndex, endIndex))
-  }, [currentPage])
+  }, [currentIndex])
 
   useEffect(() => {
     setCurrentStations(allStations.slice(startIndex, endIndex))
   }, [allStations])
 
+
   const goToPrevPage = () => {
-    if(currentPage > 0)
-      setCurrentPage(currentPage-1)
+    if(currentIndex > 0)
+      setCurrentIndex(currentIndex-1)
   }
 
   const goToNextPage = () => {
-    if(currentPage + 1 < (totalStations/15))
-      setCurrentPage(currentPage+1)
+    if(currentIndex + 1 < (totalStations/15))
+      setCurrentIndex(currentIndex+1)
   }
 
   const goToIndexPage = (pageIndex) => {
-    setCurrentPage(pageIndex)
+    setCurrentIndex(pageIndex)
   }
 
-  if(currentStations.length > 5)
-  return (
-    <div className='listComponent'>
-      <h1>Stations</h1>
-      <h4>{totalStations} stations</h4>
-      <SearchForm />
-      <table>
-        <thead>
-          <tr><th>Name</th><th>Click a row</th></tr>
-        </thead>
-        <tbody>
-          {currentStations.map(station => 
-            <StationRow 
-              key={station._id} 
-              station={station} 
-            />
-          )}
-        </tbody>
-      </table>
-      <Pagination 
-        currentPage={currentPage} 
-        goToPrevPage={goToPrevPage}
-        goToIndexPage={goToIndexPage} 
-        goToNextPage={goToNextPage}
-        totalElements={totalStations}
-      />
-    </div>
-  )
-  else
+  const handleSearch = (value) => {
+    setSearchStations(
+      allStations.filter(station => 
+        station.name.toLowerCase().includes(value))
+    )
+  }
+
+  if(!currentStations.length > 5)
     return (<></>)
+  else
+    return (
+      <div className='listComponent'>
+        <h2>Stations</h2>
+        <h4>{totalStations} stations</h4>
+        <SearchForm handleSearch={handleSearch} />
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Click a row</th></tr>
+          </thead>
+          <tbody>
+            {currentStations.map(station => 
+              <StationRow 
+                key={station._id} 
+                station={station} 
+              />
+            )}
+          </tbody>
+        </table>
+        <Pagination 
+          currentIndex={currentIndex} 
+          goToPrevPage={goToPrevPage}
+          goToIndexPage={goToIndexPage} 
+          goToNextPage={goToNextPage}
+          totalElements={totalStations}
+          pageSize = {pageSize}
+        />
+      </div>
+    )
 }
 
 export default StationsList

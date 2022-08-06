@@ -3,7 +3,7 @@ import StationsList from './components/StationsList'
 import { useState, useEffect } from 'react'
 import stationsService from './services/stationsService'
 import { BrowserRouter as Router,
-   Routes, Route, Link, NavLink } from 'react-router-dom'
+   Routes, Route, NavLink } from 'react-router-dom'
 import Home from './components/Home'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <Route path='/journeys'
           element={<JourneyList allStations={allStations}/>}/>
         <Route path='/stations'
-          element={<StationsList allStations={allStations}/>}/>
+          element={<StationsList/>}/>
         <Route path='/' element={<Home />} />
       </Routes>
 

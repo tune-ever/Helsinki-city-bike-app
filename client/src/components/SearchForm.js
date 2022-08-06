@@ -1,12 +1,11 @@
 import { useState } from 'react'
 
-const SearchInput = () => {
-
+const SearchInput = ({ handleSearch }) => {
   const [searchData, setSearchData] = useState('')
 
   const doSearch = (event) => {
     event.preventDefault()
-    console.log('test')
+    handleSearch(searchData)
   }
 
   return (

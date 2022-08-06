@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import SingleStation from './SingleStation'
 
-const StationRow = (props) => {
+const StationRow = ({ station }) => {
   const [modal, setModal] = useState(false)
-
-  const station = props.station
 
   const toggleInfo = () => {
     setModal(!modal)

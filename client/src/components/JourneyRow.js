@@ -1,11 +1,9 @@
 import './styles.css'
 
 
-const JourneyRow = (props) => {
-  const journey = props.journey
-  const stations = props.stationsArray
-  const departureStation = stations[parseInt(journey.dId)]
-  const returnStation = stations[parseInt(journey.rId)]
+const JourneyRow = ({ journey, stationsArray }) => {
+  const departureStation = stationsArray[parseInt(journey.dId)]
+  const returnStation = stationsArray[parseInt(journey.rId)]
 
   return (
     <tr>

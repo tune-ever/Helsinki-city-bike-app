@@ -7,7 +7,7 @@ import './styles.css'
 const JourneyList = ({ allStations }) => {
 
   const [journeys, setJourneys] = useState([])
-  const [currentPage, setCurrentPage] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [totalJourneys, setTotalJourneys] = useState(0)
   
   const stationsArray = []
@@ -15,11 +15,11 @@ const JourneyList = ({ allStations }) => {
     stationsArray[parseInt(station.id)] = station)
 
   useEffect(() => {
-    journeyService.getJourneys(currentPage).then(journeys =>{
+    journeyService.getJourneys(currentIndex).then(journeys =>{
       setJourneys(journeys)
     }
     )
-  }, [currentPage])
+  }, [currentIndex])
 
   useEffect(() => {
     journeyService.getTotal().then(total => setTotalJourneys(total))
@@ -27,23 +27,23 @@ const JourneyList = ({ allStations }) => {
 
   
   const goToPreviousPage = () => {
-    if(currentPage > 0)
-      setCurrentPage(currentPage-1)
+    if(currentIndex > 0)
+      setCurrentIndex(currentIndex-1)
   }
 
   const goToNextPage = () => {
-    if(currentPage + 1 < (totalJourneys/15))
-      setCurrentPage(currentPage+1)
+    if(currentIndex + 1 < (totalJourneys/15))
+      setCurrentIndex(currentIndex+1)
   }
 
   const goToIndexPage = (pageIndex) => {
-    setCurrentPage(pageIndex)
+    setCurrentIndex(pageIndex)
   }
   
   if(stationsArray.length > 5)
   return (
     <div className='listComponent'>
-      <h1>Journeys</h1>
+      <h2>Journeys</h2>
       <h3>Journeys data from 05-07/2021</h3>
       <h4>{totalJourneys} journeys</h4>
       <table>
@@ -60,7 +60,7 @@ const JourneyList = ({ allStations }) => {
         </tbody>
       </table>
       <Pagination 
-        currentPage={currentPage} 
+        currentIndex={currentIndex} 
         goToPreviousPageage={goToPreviousPage}
         totalElements={totalJourneys} 
         goToNextPage={goToNextPage}
