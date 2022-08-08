@@ -1,11 +1,11 @@
 table {
   min-width: 80vw;
-  border-collapse: collapse;
   overflow: hidden;
   table-layout: fixed;
   width: 80vw;
   border-radius: 5px;
   margin: 10px;
+  border-collapse: collapse;
 }
 
 th {
@@ -17,12 +17,11 @@ th {
 }
 
 td {
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   font-size: 0.9rem;
 }
 
 tr {
-  
   border-spacing: 0;
 }
 
@@ -55,7 +54,7 @@ td:nth-of-type(2) {
 }
 
 tr:hover {
-  background-color: #8FBBC1;
+  background-color: lightblue;
 }
 
 .pagination {
@@ -74,7 +73,7 @@ tr:hover {
 }
 
 .pagination button:hover {
-  background-color: lightslategray;
+  background-color: lightgrey;
 }
 
 .listComponent {
