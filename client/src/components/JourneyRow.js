@@ -7,10 +7,16 @@ const JourneyRow = ({ journey, stationsArray }) => {
 
   return (
     <tr>
-      <td>{departureStation.name}</td>
-      <td>{returnStation.name}</td>
-      <td>{(journey.dis/1000).toPrecision(2)} km</td>
-      <td>{(journey.dur/60).toPrecision(2)}
+      <td>{(departureStation)
+        ? departureStation.name
+        : 'unkown'} 
+      </td>
+      <td>{(returnStation)
+        ? returnStation.name
+        : 'unknown'}
+      </td>
+      <td>{(journey.dis/1000).toFixed(1)} km</td>
+      <td>{(journey.dur/60).toFixed(0)}
        min<br/></td>
     </tr>
   )

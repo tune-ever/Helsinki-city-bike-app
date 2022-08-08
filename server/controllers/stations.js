@@ -8,7 +8,7 @@ StationsRouter.get('/', async (request, response) => {
 
   if(allFlag){
     const stations = await Station.find({})
-    .sort({ 'name': 1 })
+      .sort({ 'name': 1 })
     response.json(stations)
   }
   else{

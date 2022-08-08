@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const journeySchema = new mongoose.Schema({
   dId: String,
   rId: String,
-  dis: String,
-  dur: String
+  dis: Number,
+  dur: Number
 })
 
 module.exports = mongoose.model('Journey', journeySchema)

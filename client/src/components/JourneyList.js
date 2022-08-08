@@ -16,6 +16,7 @@ const JourneyList = ({ allStations }) => {
 
   useEffect(() => {
     journeyService.getJourneys(currentIndex).then(journeys =>{
+      console.log(journeys)
       setJourneys(journeys)
     }
     )
@@ -40,6 +41,13 @@ const JourneyList = ({ allStations }) => {
     setCurrentIndex(pageIndex)
   }
   
+  const orderByDistance = () => {
+    journeyService.getJourneysByDistance().then(journeys => {
+      console.log(journeys)
+      setJourneys(journeys)
+    })
+  }
+
   if(stationsArray.length > 5)
   return (
     <div className='listComponent'>
@@ -48,7 +56,7 @@ const JourneyList = ({ allStations }) => {
       <h4>{totalJourneys} journeys</h4>
       <table>
         <thead><tr><th>Departure</th><th>Return</th>
-        <th>Distance</th><th>Duration</th></tr></thead>
+        <th onClick={orderByDistance}>Distance</th><th>Duration</th></tr></thead>
         <tbody>
           {journeys.map((journey) => 
             <JourneyRow 
@@ -64,7 +72,8 @@ const JourneyList = ({ allStations }) => {
         goToPreviousPageage={goToPreviousPage}
         totalElements={totalJourneys} 
         goToNextPage={goToNextPage}
-        goToIndexPage={goToIndexPage} 
+        goToIndexPage={goToIndexPage}
+        pageSize = '15'
       />
     </div>
   )

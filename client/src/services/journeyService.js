@@ -11,5 +11,9 @@ const getTotal = () => {
   return request.then(response => response.data)
 }
 
+const getJourneysByDistance = () => {
+  const request = axios.get(`${baseUrl}?sort=dis`)
+  return request.then(response => response.data)
+}
 
-export default { getJourneys, getTotal, }
+export default { getJourneys, getTotal, getJourneysByDistance }

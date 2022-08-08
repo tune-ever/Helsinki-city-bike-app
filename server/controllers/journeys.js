@@ -7,8 +7,23 @@ JourneysRouter.get('/', async (request, response) => {
   const depId = request.query.did
   const returnId = request.query.rid
   const total = request.query.total
+  const sort = request.query.sort
 
-  if(total){
+  if(sort === 'dis'){
+    const journeys = await Journey
+      .find({})
+      .sort({ 'dis': -1 })
+      .limit(PAGE_SIZE)
+    response.json(journeys)
+  }
+  else if(sort === 'dur'){
+    const journeys = await Journey
+      .find({})
+      .sort({ 'dur': -1 })
+      .limit(PAGE_SIZE)
+    response.json(journeys)
+  }
+  else if(total){
     const total = await Journey.find({}).count()
     response.json(total)
   }

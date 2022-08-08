@@ -71,13 +71,29 @@ const readJourneys = () => {
 
 const convertJourneystoJSON = async () => {
   const data = await readJourneys()
-  
+  console.log(data)
+
+  const converted = []
+
+  data.map(row => {
+    newJourney = {
+      dId: row.dId,
+      rId: row.rId,
+      dis: parseInt(row.dis),
+      dur: parseInt(row.dur)
+    }
+    converted.push(newJourney)
+  })
+
+  console.log(converted)
+
+
   console.log("start writing file")
-  writeFile(JSON.stringify(data))
+  writeFile(JSON.stringify(converted))
 }
 
 const writeFile = (data) => {
-  fs.writeFile('journeys.json', data, 'utf8', (err) =>{
+  fs.writeFile('journeys.json', data, (err) =>{
     if(err)
       console.log(err)
     else {
@@ -85,5 +101,7 @@ const writeFile = (data) => {
     }
   })
 }
+
+convertJourneystoJSON()
 
 module.exports = readJourneys
