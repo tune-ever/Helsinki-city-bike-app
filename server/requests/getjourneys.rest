@@ -1,1 +1,3 @@
-GET http://localhost:3003/api/journeys?sort=dur
+GET http://localhost:3003/api/journeys?sort=dis&page=5000
+
+

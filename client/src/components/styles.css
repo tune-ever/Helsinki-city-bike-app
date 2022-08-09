@@ -70,6 +70,8 @@ tr:hover {
   border: none;
   border-radius: 10px;
   background-color: #D8DCE0;
+  font-size: 1.5rem;
+  border: 1px solid #254673;
 }
 
 .pagination button:hover {
@@ -78,4 +80,12 @@ tr:hover {
 
 .listComponent {
   width: 80vw;
+}
+
+.clickableHeader {
+  text-decoration: underline;
+}
+
+.clickableHeader:hover {
+  cursor: pointer;
 }

@@ -1,6 +1,5 @@
 import './styles.css'
 
-
 const JourneyRow = ({ journey, stationsArray }) => {
   const departureStation = stationsArray[parseInt(journey.dId)]
   const returnStation = stationsArray[parseInt(journey.rId)]

@@ -14,6 +14,7 @@ JourneysRouter.get('/', async (request, response) => {
       .find({})
       .sort({ 'dis': -1 })
       .limit(PAGE_SIZE)
+      .skip(page * PAGE_SIZE)
     response.json(journeys)
   }
   else if(sort === 'dur'){
@@ -21,6 +22,7 @@ JourneysRouter.get('/', async (request, response) => {
       .find({})
       .sort({ 'dur': -1 })
       .limit(PAGE_SIZE)
+      .skip(page * PAGE_SIZE)
     response.json(journeys)
   }
   else if(total){
