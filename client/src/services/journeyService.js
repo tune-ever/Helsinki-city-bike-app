@@ -31,7 +31,15 @@ const getJourneysByDurationReversed = (page) => {
   return request.then(response => response.data)
 }
 
+const getAverageFromStation = (stationId) => {
+  const request = axios.get(`${baseUrl}?average=start&stationid=${stationId}`)
+  return request.then(response => response.data)
+}
 
+const getAverageToStation = (stationId) => {
+  const request = axios.get(`${baseUrl}?average=end&stationid=${stationId}`)
+  return request.then(response => response.data)
+}
 
 export default { 
   getJourneys, 
@@ -39,5 +47,7 @@ export default {
   getJourneysByDistance, 
   getJourneysByDuration, 
   getJourneysByDistanceReversed, 
-  getJourneysByDurationReversed 
+  getJourneysByDurationReversed,
+  getAverageFromStation,
+  getAverageToStation
 }

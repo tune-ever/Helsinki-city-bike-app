@@ -6,8 +6,26 @@ JourneysRouter.get('/', async (request, response) => {
   const page = request.query.page
   const total = request.query.total
   const sort = request.query.sort
+  const stationId = request.query.stationid
+  const average = request.query.average
 
-  if(sort === 'disrev'){
+  if(average === 'start'){
+    const journeysById = await Journey
+      .find({ dId: stationId }, 'dis')
+    let sum = 0
+    journeysById.map(journey => sum += journey.dis)
+    const averageDistance = sum/journeysById.length
+    response.json(averageDistance)
+  }
+  else if(average === 'end'){
+    const journeysById = await Journey
+      .find({ rId: stationId }, 'dis')
+    let sum = 0
+    journeysById.map(journey => sum += journey.dis)
+    const averageDistance = sum/journeysById.length
+    response.json(averageDistance)
+  }
+  else if(sort === 'disrev'){
     const journeys = await Journey
       .find({})
       .sort({ 'dis': -1 })
@@ -51,6 +69,7 @@ JourneysRouter.get('/', async (request, response) => {
     response.json(journeys)
   }
 })
+
 
 
 module.exports = JourneysRouter
