@@ -14,8 +14,8 @@ const JourneyRow = ({ journey, stationsArray }) => {
         ? returnStation.name
         : 'unknown'}
       </td>
-      <td>{(journey.dis/1000).toFixed(1)} km</td>
-      <td>{(journey.dur/60).toFixed(0)}
+      <td>{(journey.dis/1000).toFixed(3)} km</td>
+      <td>{(journey.dur/60).toFixed(2)}
        min<br/></td>
     </tr>
   )

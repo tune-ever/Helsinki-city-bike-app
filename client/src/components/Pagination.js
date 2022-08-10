@@ -7,10 +7,11 @@ const Pagination = ({ currentIndex, totalElements, goToNextPage,
 
   return (
     <div className='pagination'>
-      <button onClick={() => goToIndexPage(0)}>first</button>
+      <button onClick={() => goToIndexPage(0)}>{'<<'}</button>
       <button onClick={goToPrevPage}>{'<'}</button>
+      <button>{currentIndex}</button>
       <button onClick={goToNextPage}>{'>'}</button>
-      <button onClick={() => goToIndexPage(totalPages)}>last</button>
+      <button onClick={() => goToIndexPage(totalPages)}>{'>>'}</button>
     </div>
   )
 }

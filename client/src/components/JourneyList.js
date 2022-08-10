@@ -16,13 +16,23 @@ const JourneyList = ({ allStations }) => {
     stationsArray[parseInt(station.id)] = station)
 
   useEffect(() => {
-    if (activeSortType === 'distance'){
+    if(activeSortType === 'distance'){
       journeyService.getJourneysByDistance(currentIndex).then(journeys =>{
         setJourneys(journeys)
       })
     }
-    if (activeSortType === 'duration'){
+    if(activeSortType === 'duration'){
       journeyService.getJourneysByDuration(currentIndex).then(journeys => {
+        setJourneys(journeys)
+      })
+    }
+    if(activeSortType === 'distanceReversed'){
+      journeyService.getJourneysByDistanceReversed(currentIndex).then(journeys => {
+        setJourneys(journeys)
+      })
+    }
+    if(activeSortType === 'durationReversed'){
+      journeyService.getJourneysByDurationReversed(currentIndex).then(journeys => {
         setJourneys(journeys)
       })
     }
@@ -50,13 +60,21 @@ const JourneyList = ({ allStations }) => {
 
   const goToIndexPage = (pageIndex) => {
     // don't allow users to go to last page with sort active, 
-    // too hard for database
+    // too hard for database with current code
     if(activeSortType && pageIndex > 5000)
       return
     setCurrentIndex(pageIndex)
   }
   
   const orderByDistance = () => {
+    setCurrentIndex(0)
+    if(activeSortType === 'distance'){
+      journeyService.getJourneysByDistanceReversed().then(journeys => {
+        setJourneys(journeys)
+      })
+      setActiveSortType('distanceReversed')
+      return
+    }
     journeyService.getJourneysByDistance().then(journeys => {
       setJourneys(journeys)
     })
@@ -64,6 +82,14 @@ const JourneyList = ({ allStations }) => {
   }
 
   const orderByDuration = () => {
+    setCurrentIndex(0)
+    if(activeSortType === 'duration'){
+      journeyService.getJourneysByDurationReversed().then(journeys => {
+        setJourneys(journeys)
+      })
+      setActiveSortType('durationReversed')
+      return
+    }
     journeyService.getJourneysByDuration().then(journeys => {
       setJourneys(journeys)
     })
