@@ -108,10 +108,16 @@ const JourneyList = ({ allStations }) => {
             <th>Departure</th>
             <th>Return</th>
             <th className='clickableHeader'
-              onClick={orderByDistance}>Distance
+              onClick={orderByDistance}>
+              Distance
+              <i className='down'></i>
+              <i className='up'></i>
             </th>
             <th className='clickableHeader'
-              onClick={orderByDuration}>Duration
+              onClick={orderByDuration}>
+              Duration
+              <i className='down'></i>
+              <i className='up'></i>
             </th>
           </tr>
         </thead>

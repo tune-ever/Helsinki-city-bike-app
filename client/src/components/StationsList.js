@@ -9,8 +9,8 @@ const StationsList = ({ allStations }) => {
   const PAGE_SIZE = 15
   const [currentStations, setCurrentStations] = useState([])
   const [filter, setFilter] = useState('')
-  const stationsAmount = allStations.length
   const [currentIndex, setCurrentIndex] = useState(0)
+  const stationsAmount = allStations.length
   const totalPages = Math.floor(stationsAmount/PAGE_SIZE)
 
   useEffect(() => {
@@ -26,10 +26,12 @@ const StationsList = ({ allStations }) => {
   }, [currentIndex])
 
   useEffect(() => {
+    setCurrentIndex(0)
     setCurrentStations(
-      allStations.filter(
-        station => station.name.toLowerCase().includes(filter)
-      )
+      allStations
+        .filter(
+          station => station.name.toLowerCase().includes(filter.toLowerCase()))
+        .slice(currentIndex*PAGE_SIZE, currentIndex*PAGE_SIZE+PAGE_SIZE)
     )
   }, [filter])
 
@@ -48,11 +50,13 @@ const StationsList = ({ allStations }) => {
   }
 
   const goToPrevPage = () => {
+    setFilter('')
     if(currentIndex > 0)
       setCurrentIndex(currentIndex -1)
   }
 
   const goToNextPage = () => {
+    setFilter('')
     if(currentIndex < totalPages)
       setCurrentIndex(currentIndex +1)
   }
@@ -61,7 +65,10 @@ const StationsList = ({ allStations }) => {
     <div className='listComponent'>
       <h2>Stations</h2>
       <h4>{stationsAmount} stations</h4>
-      <Filter handleChange={handleFilterChange} />
+      <Filter
+        handleChange={handleFilterChange}
+        filter={filter}
+      />
       <table>
         <thead>
           <tr><th>Name</th><th>Click to expand</th></tr>
