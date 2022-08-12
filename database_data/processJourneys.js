@@ -24,45 +24,6 @@ const readJourneys = () => {
       if(data.dur >= 10 && data.dis >= 10)
         results.push(data)
     })
-
-  fs.createReadStream('./2021-06.csv')
-    .pipe(csv({
-      mapHeaders: ({ header, index }) => {
-        if(index === 2)
-          return 'dId'
-        if(index === 4) 
-          return 'rId'
-        if(index === 6)
-          return 'dis'
-        if(index === 7)
-          return 'dur'
-        else
-          return null
-      }
-    }))
-    .on('data', (data) => {
-      if(data.dur >= 10 && data.dis >= 10)
-        results.push(data)
-    })
-  fs.createReadStream('./2021-07.csv')
-    .pipe(csv({
-      mapHeaders: ({ header, index }) => {
-        if(index === 2)
-          return 'dId'
-        if(index === 4) 
-          return 'rId'
-        if(index === 6)
-          return 'dis'
-        if(index === 7)
-          return 'dur'
-        else
-          return null
-      }
-    }))
-    .on('data', (data) => {
-      if(data.dur >= 10 && data.dis >= 10)
-        results.push(data)
-    })
     .on('end', () => {
       resolve(results)
     })

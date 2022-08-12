@@ -56,7 +56,6 @@ td:nth-of-type(2) {
 }
 
 tr:hover {
-  cursor: pointer;
   background-color: lightcyan;
 }
 
@@ -111,5 +110,9 @@ tr:hover {
 }
 
 .clickableHeader:hover {
+  cursor: pointer;
+}
+
+.expandableTable {
   cursor: pointer;
 }

@@ -102,6 +102,7 @@ const JourneyList = ({ allStations }) => {
       <h2>Journeys</h2>
       <h3>Journeys data from 05-07/2021</h3>
       <h4>{totalJourneys} journeys</h4>
+      <h4>Sort a column by clicking header (distance or duration)</h4>
       <table>
         <thead>
           <tr>
@@ -110,14 +111,22 @@ const JourneyList = ({ allStations }) => {
             <th className='clickableHeader'
               onClick={orderByDistance}>
               Distance
-              <i className='down'></i>
-              <i className='up'></i>
+              {(activeSortType === 'distance') &&
+                <i className='down'></i>
+              }
+              {(activeSortType === 'distanceReversed') &&
+                <i className='up'></i>
+              }
             </th>
             <th className='clickableHeader'
               onClick={orderByDuration}>
-              Duration
-              <i className='down'></i>
-              <i className='up'></i>
+                Duration
+              {(activeSortType === 'duration') &&
+                <i className='down'></i>
+              }
+              {(activeSortType === 'durationReversed') &&
+                <i className='up'></i>
+              }
             </th>
           </tr>
         </thead>

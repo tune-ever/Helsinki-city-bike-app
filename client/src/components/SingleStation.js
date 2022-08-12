@@ -23,12 +23,12 @@ const SingleStation = ({ station }) => {
       <h4>Average journey length from here:
         {(avgStart > 0)
             ? ' ' + (avgStart/1000).toFixed(1) + ' km'
-            : 'loading'}
+            : ''}
       </h4>
       <h4>Average journey length to here: 
         {(avgEnd >0)
           ? ' ' + (avgEnd/1000).toFixed(1) + ' km'
-          : 'loading'}
+          : ''}
       </h4>
     </div>
   )

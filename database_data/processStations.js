@@ -6,7 +6,7 @@ const readFiles = () => {
   const stations = []
   
   return new Promise((resolve, rejesct) => {
-  fs.createReadStream('./asemat.csv')
+  fs.createReadStream('./Helsingin_ja_Espoon_kaupunkipy%C3%B6r%C3%A4asemat_avoin.csv')
     .pipe(csv({
       mapHeaders: ({ header, index }) => {
         if(index === 1)

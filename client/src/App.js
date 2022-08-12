@@ -34,13 +34,8 @@ function App() {
         <Route path='/stations'
           element={<StationsList allStations={allStations}/>}/>
         <Route path='/' element={<Home />} />
+        <Route path="*" element={'test'} />
       </Routes>
-
-      <div>
-        <i>Helsinki City Bike App, Pre-assignment for 
-          solita Dev academy. By: Tune-ever
-        </i>
-      </div>
     </Router>
   );
 }

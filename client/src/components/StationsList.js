@@ -65,15 +65,16 @@ const StationsList = ({ allStations }) => {
     <div className='listComponent'>
       <h2>Stations</h2>
       <h4>{stationsAmount} stations</h4>
+      <h5>Click a row to view more info</h5>
       <Filter
         handleChange={handleFilterChange}
         filter={filter}
       />
       <table>
         <thead>
-          <tr><th>Name</th><th>Click to expand</th></tr>
+          <tr><th>Name</th><th></th></tr>
         </thead>
-        <tbody>
+        <tbody className='expandableTable'>
           {currentStations.map(station => 
             <StationRow 
               key={station._id} 

@@ -40,7 +40,6 @@ JourneysRouter.get('/', async (request, response) => {
       .limit(PAGE_SIZE)
       .skip(page * PAGE_SIZE)
     response.json(journeys)
-      
   }
   else if(sort === 'dis'){
     const journeys = await Journey
