@@ -1,5 +1,6 @@
-import journeyService from "../services/journeyService"
+import journeyService from '../services/journeyService'
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 const SingleStation = ({ station }) => {
 

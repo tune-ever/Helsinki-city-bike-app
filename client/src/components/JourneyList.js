@@ -1,42 +1,41 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import journeyService from '../services/journeyService'
 import JourneyRow from './JourneyRow'
 import Pagination from './Pagination'
 import './styles.css'
 
 const JourneyList = ({ allStations }) => {
-
   const [journeys, setJourneys] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [totalJourneys, setTotalJourneys] = useState(0)
   const [activeSortType, setActiveSortType] = useState('')
-  
   const stationsArray = []
-  allStations.map(station =>
-    stationsArray[parseInt(station.id)] = station)
+  allStations.forEach(station => {
+    stationsArray[parseInt(station.id)] = station
+  })
 
   useEffect(() => {
-    if(activeSortType === 'distance'){
-      journeyService.getJourneysByDistance(currentIndex).then(journeys =>{
+    if (activeSortType === 'distance') {
+      journeyService.getJourneysByDistance(currentIndex).then(journeys => {
         setJourneys(journeys)
       })
     }
-    if(activeSortType === 'duration'){
+    if (activeSortType === 'duration') {
       journeyService.getJourneysByDuration(currentIndex).then(journeys => {
         setJourneys(journeys)
       })
     }
-    if(activeSortType === 'distanceReversed'){
+    if (activeSortType === 'distanceReversed') {
       journeyService.getJourneysByDistanceReversed(currentIndex).then(journeys => {
         setJourneys(journeys)
       })
     }
-    if(activeSortType === 'durationReversed'){
+    if (activeSortType === 'durationReversed') {
       journeyService.getJourneysByDurationReversed(currentIndex).then(journeys => {
         setJourneys(journeys)
       })
     }
-    if(!activeSortType){
+    if (!activeSortType) {
       journeyService.getJourneys(currentIndex).then(journeys => {
         setJourneys(journeys)
       })
@@ -47,28 +46,30 @@ const JourneyList = ({ allStations }) => {
     journeyService.getTotal().then(total => setTotalJourneys(total))
   }, [])
 
-  
   const goToPrevPage = () => {
-    if(currentIndex > 0)
-      setCurrentIndex(currentIndex-1)
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1)
+    }
   }
 
   const goToNextPage = () => {
-    if(currentIndex + 1 < (totalJourneys/15))
-      setCurrentIndex(currentIndex+1)
+    if (currentIndex + 1 < (totalJourneys / 15)) {
+      setCurrentIndex(currentIndex + 1)
+    }
   }
 
   const goToIndexPage = (pageIndex) => {
-    // don't allow users to go to last page with sort active, 
+    // don't allow users to go to last page with sort active,
     // too hard for database with current code
-    if(activeSortType && pageIndex > 5000)
+    if (activeSortType && pageIndex > 5000) {
       return
+    }
     setCurrentIndex(pageIndex)
   }
-  
+
   const orderByDistance = () => {
     setCurrentIndex(0)
-    if(activeSortType === 'distance'){
+    if (activeSortType === 'distance') {
       journeyService.getJourneysByDistanceReversed().then(journeys => {
         setJourneys(journeys)
       })
@@ -83,7 +84,7 @@ const JourneyList = ({ allStations }) => {
 
   const orderByDuration = () => {
     setCurrentIndex(0)
-    if(activeSortType === 'duration'){
+    if (activeSortType === 'duration') {
       journeyService.getJourneysByDurationReversed().then(journeys => {
         setJourneys(journeys)
       })
@@ -96,7 +97,6 @@ const JourneyList = ({ allStations }) => {
     setActiveSortType('duration')
   }
 
-  if(stationsArray.length > 5)
   return (
     <div className='listComponent'>
       <h2>Journeys</h2>
@@ -131,27 +131,29 @@ const JourneyList = ({ allStations }) => {
           </tr>
         </thead>
         <tbody>
-          {journeys.map((journey) => 
-            <JourneyRow 
-              key={journey._id} 
-              journey={journey} 
-              stationsArray={stationsArray} 
+          {journeys.map((journey) =>
+            <JourneyRow
+              key={journey._id}
+              journey={journey}
+              stationsArray={stationsArray}
             />
           )}
         </tbody>
       </table>
-      <Pagination 
-        currentIndex={currentIndex} 
+      <Pagination
+        currentIndex={currentIndex}
         goToPrevPage={goToPrevPage}
-        totalElements={totalJourneys} 
+        totalElements={totalJourneys}
         goToNextPage={goToNextPage}
         goToIndexPage={goToIndexPage}
         pageSize = '15'
       />
     </div>
   )
-  else
-   return(<></>)
+}
+
+JourneyList.propTypes = {
+  allStations: React.proptypes.array
 }
 
 export default JourneyList

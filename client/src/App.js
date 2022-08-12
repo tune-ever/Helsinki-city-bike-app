@@ -1,12 +1,14 @@
 import JourneyList from './components/JourneyList'
 import StationsList from './components/StationsList'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import stationsService from './services/stationsService'
-import { BrowserRouter as Router,
-   Routes, Route, NavLink } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes, Route, NavLink
+} from 'react-router-dom'
 import Home from './components/Home'
 
-function App() {
+function App () {
   const [allStations, setAllStations] = useState([])
 
   useEffect(() => {
@@ -18,14 +20,14 @@ function App() {
   return (
     <Router>
       <div>
-        <NavLink className={({ isActive }) => 
-        (isActive ? 'active' : 'inactive')}to='/'>
+        <NavLink className={({ isActive }) =>
+          (isActive ? 'active' : 'inactive')}to='/'>
           Home</NavLink>
-        <NavLink className={({ isActive }) => 
-        (isActive ? 'active' : 'inactive')} to='/journeys'>
+        <NavLink className={({ isActive }) =>
+          (isActive ? 'active' : 'inactive')} to='/journeys'>
           Journeys</NavLink>
-        <NavLink className={({ isActive }) => 
-        (isActive ? 'active' : 'inactive')} to='/stations'>
+        <NavLink className={({ isActive }) =>
+          (isActive ? 'active' : 'inactive')} to='/stations'>
           Stations</NavLink>
       </div>
       <Routes>
@@ -37,7 +39,7 @@ function App() {
         <Route path="*" element={'test'} />
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,6 +1,6 @@
+import React from 'react'
 
 const Filter = ({ filter, handleChange }) => {
-
   return (
     <input
       type='text'
@@ -12,3 +12,8 @@ const Filter = ({ filter, handleChange }) => {
 }
 
 export default Filter
+
+Filter.propTypes = {
+  filter: React.propTypes.string,
+  handleChange: React.proptypes.func
+}
