@@ -29,7 +29,7 @@ The purpose is to display journeys and stations data from Helsinki city bikes. T
 <li>NodeJs</li>
 </ul>
 
-## Run the app with already existing database
+## Run the app with already existing database(production build)
 
 ### Prerequisites
 
