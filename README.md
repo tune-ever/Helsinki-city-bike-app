@@ -2,6 +2,10 @@
 
 This is a full-stack application to display data from Helsinki city bikes.
 
+## Deployed
+
+<a href="https://hslbikeapp.herokuapp.com/">https://hslbikeapp.herokuapp.com/</a>
+
 ## Description
 
 The purpose is to display journeys and stations data from Helsinki city bikes. The data is owned by City Bike Finland.
