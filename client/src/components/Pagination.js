@@ -14,11 +14,13 @@ const Pagination = ({
 
   return (
     <div className='pagination'>
-      <button onClick={() => goToIndexPage(0)}>{'<<'}</button>
+      <button onClick={() => goToIndexPage(0)}>{'first'}</button>
       <button onClick={goToPrevPage}>{'<'}</button>
       <button>{currentIndex + 1}</button>
       <button onClick={goToNextPage}>{'>'}</button>
-      <button onClick={() => goToIndexPage(totalPages)}>{'>>'}</button>
+      <button onClick={() => goToIndexPage(totalPages)}>
+        {'last ' + totalPages}
+      </button>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import journeyService from '../services/journeyService'
 import JourneyRow from './JourneyRow'
 import Pagination from './Pagination'
 import './styles.css'
+import PropTypes from 'prop-types'
 
 const JourneyList = ({ allStations }) => {
   const [journeys, setJourneys] = useState([])
@@ -102,7 +103,7 @@ const JourneyList = ({ allStations }) => {
       <h2>Journeys</h2>
       <h3>Journeys data from 05-07/2021</h3>
       <h4>{totalJourneys} journeys</h4>
-      <h4>Sort a column by clicking header (distance or duration)</h4>
+      <h4>Sort a column by clicking header (distance or duration) </h4>
       <table>
         <thead>
           <tr>
@@ -153,7 +154,7 @@ const JourneyList = ({ allStations }) => {
 }
 
 JourneyList.propTypes = {
-  allStations: React.proptypes.array
+  allStations: PropTypes.array
 }
 
 export default JourneyList

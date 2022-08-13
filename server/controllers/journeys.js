@@ -9,66 +9,58 @@ JourneysRouter.get('/', async (request, response) => {
   const stationId = request.query.stationid
   const average = request.query.average
 
-  if(average === 'start'){
+  if (average === 'start') {
     const journeysById = await Journey
       .find({ dId: stationId }, 'dis')
     let sum = 0
-    journeysById.map(journey => sum += journey.dis)
-    const averageDistance = sum/journeysById.length
+    journeysById.forEach(journey => { sum += journey.dis })
+    const averageDistance = sum / journeysById.length
     response.json(averageDistance)
-  }
-  else if(average === 'end'){
+  } else if (average === 'end') {
     const journeysById = await Journey
       .find({ rId: stationId }, 'dis')
     let sum = 0
-    journeysById.map(journey => sum += journey.dis)
-    const averageDistance = sum/journeysById.length
+    // eslint-disable-next-line array-callback-return
+    journeysById.map(journey => { sum += journey.dis })
+    const averageDistance = sum / journeysById.length
     response.json(averageDistance)
-  }
-  else if(sort === 'disrev'){
+  } else if (sort === 'disrev') {
     const journeys = await Journey
       .find({})
-      .sort({ 'dis': -1 })
+      .sort({ dis: -1 })
       .limit(PAGE_SIZE)
       .skip(page * PAGE_SIZE)
     response.json(journeys)
-  }
-  else if(sort === 'durrev'){
+  } else if (sort === 'durrev') {
     const journeys = await Journey
       .find({})
-      .sort({ 'dur': -1 })
+      .sort({ dur: -1 })
       .limit(PAGE_SIZE)
       .skip(page * PAGE_SIZE)
     response.json(journeys)
-  }
-  else if(sort === 'dis'){
+  } else if (sort === 'dis') {
     const journeys = await Journey
       .find({})
-      .sort({ 'dis': 1 })
+      .sort({ dis: 1 })
       .limit(PAGE_SIZE)
       .skip(page * PAGE_SIZE)
     response.json(journeys)
-  }
-  else if(sort === 'dur'){
+  } else if (sort === 'dur') {
     const journeys = await Journey
       .find({})
-      .sort({ 'dur': 1 })
+      .sort({ dur: 1 })
       .limit(PAGE_SIZE)
       .skip(page * PAGE_SIZE)
     response.json(journeys)
-  }
-  else if(total){
+  } else if (total) {
     const total = await Journey.find({}).count()
     response.json(total)
-  }
-  else {
+  } else {
     const journeys = await Journey.find({})
       .limit(PAGE_SIZE)
       .skip(PAGE_SIZE * page)
     response.json(journeys)
   }
 })
-
-
 
 module.exports = JourneysRouter

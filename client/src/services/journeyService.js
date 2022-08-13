@@ -41,12 +41,12 @@ const getAverageToStation = (stationId) => {
   return request.then(response => response.data)
 }
 
-export default { 
-  getJourneys, 
-  getTotal, 
-  getJourneysByDistance, 
-  getJourneysByDuration, 
-  getJourneysByDistanceReversed, 
+export default {
+  getJourneys,
+  getTotal,
+  getJourneysByDistance,
+  getJourneysByDuration,
+  getJourneysByDistanceReversed,
   getJourneysByDurationReversed,
   getAverageFromStation,
   getAverageToStation

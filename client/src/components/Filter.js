@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Filter = ({ filter, handleChange }) => {
   return (
@@ -14,6 +15,6 @@ const Filter = ({ filter, handleChange }) => {
 export default Filter
 
 Filter.propTypes = {
-  filter: React.propTypes.string,
-  handleChange: React.proptypes.func
+  filter: PropTypes.string,
+  handleChange: PropTypes.func
 }
