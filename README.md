@@ -51,6 +51,12 @@ npm start
 ```
 2. Go to localhost:3003
 
+3. Optional: Run front end in development mode
+```
+cd client
+npm install
+npm start
+```
 
 ## Set up your own database and run the app
 
